@@ -15,8 +15,8 @@ set ic				"case insensitive 不區分大小寫
 set history=50		"紀錄50個指令
 set nocompatible	"和舊版vi不相容
 set expandtab       "空白取代tab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 "}}}
 "Encoding {{{
 set encoding=utf-8
@@ -58,49 +58,30 @@ autocmd BufRead *.java nmap <leader>c :w<CR>G:r!javac %; java `basename % .java`
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
 " The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
+" Keep Plugin commands between vundle#begin/end.  " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-
-"NERDTree
+"=================
+"   NERDTree
+"=================
 Plugin 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
 
-"lightline
+"=================
+"   lightline
+"=================
 Plugin 'itchyny/lightline.vim'
 set laststatus=2
 if !has('gui_running')
@@ -110,22 +91,48 @@ let g:lightline = {
 	\'colorscheme': 'jellybeans',
 	\ }
 
-"emmet
+"=================
+"     emmet
+"=================
 Plugin 'mattn/emmet-vim'
 
-"tmux
-"autocmd BufEnter * call system("tmux rename-window " . expand("%:t"))
-"autocmd VimLeave * call system("tmux rename-window bash")
-"autocmd BufEnter * let &titlestring = ' ' . expand("%:t")          
-"set title
 
-"filetype plugin indent on
+"=================
+"    coc.nvim 
+"=================
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plugin 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plugin 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+Plugin 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 
-"IndentLine
-"Plugin 'Yggdroot/indentLine'
-"let g:indentLine_color_term = 243
-"let g:indentLine_leadingSpaceChar = '·'
-"let g:indentLine_leadingSpaceEnabled = 1
+"=================
+"   prettier
+"=================
+" cd ~/.vim/bundle
+" git clone https://github.com/prettier/vim-prettier
+Plugin 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'branch': 'release/0.x'
+  \ }
+"=====================
+"  styled-components 
+"=====================
+Plugin 'styled-components/vim-styled-components'
+"=====================
+"    vim-jsx 
+"=====================
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 "}}}
 
