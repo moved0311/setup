@@ -10,11 +10,11 @@ augroup END
 "}}}
 "General {{{
 syntax on
-set hlsearch		"搜尋顯示
-set ic				"case insensitive 不區分大小寫
+set hlsearch		  "搜尋顯示
+set ic				    "case insensitive 不區分大小寫
 set history=50		"紀錄50個指令
 set nocompatible	"和舊版vi不相容
-set expandtab       "空白取代tab
+set expandtab     "空白取代tab
 set tabstop=2
 set shiftwidth=2
 "}}}
@@ -25,8 +25,9 @@ set fileencoding=utf-8
 "GUI {{{
 set background=dark
 colorscheme vgod
-set nu				"show line number
-set scrolloff=5		"preserve 5 underline
+set nu				      "show line number
+set relativenumber  "show relative line number
+set scrolloff=5		  "preserve 5 underline
 
 "split
 set splitbelow
@@ -35,6 +36,7 @@ set cursorline      "目前行數底線
 "}}}
 "Keymap {{{
 let mapleader=","
+imap jj <ESC>
 
 "編輯.vimrc
 nmap <leader>e :e ~/.vimrc<CR>
@@ -44,7 +46,11 @@ nmap <leader>s :source ~/.vimrc<CR>
 "close search highlight
 map <leader>/ :nohl<CR>
 
-imap jj <ESC>
+" move window when split (shift + h,j,k,l)
+nnoremap <S-h>  <C-w>h
+nnoremap <S-l>  <C-w>l
+nnoremap <S-j>  <C-w>j
+nnoremap <S-k>  <C-w>k
 
 "compiler code
 autocmd BufRead *.html nmap <leader>c :w<CR>G:!google-chrome % & <CR><CR>
@@ -96,7 +102,6 @@ let g:lightline = {
 "=================
 Plugin 'mattn/emmet-vim'
 
-
 "=================
 "    coc.nvim 
 "=================
@@ -105,6 +110,11 @@ Plugin 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plugin 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
 Plugin 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
 Plugin 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plugin 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
+Plugin 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plugin 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'}
+" insert line when <CR> is press, when use {}, []
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 "=================
 "   prettier
