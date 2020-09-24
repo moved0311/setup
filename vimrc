@@ -125,6 +125,9 @@ Plugin 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'branch': 'release/0.x'
   \ }
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
 "=====================
 "  styled-components 
 "=====================
@@ -135,9 +138,6 @@ Plugin 'styled-components/vim-styled-components'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
-
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 
 " All of your Plugins must be added before the following line

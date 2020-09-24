@@ -1,0 +1,4 @@
+{
+  "html.autoClosingTags": true,
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"]
+}

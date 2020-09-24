@@ -11,3 +11,6 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # install colors
 cp -r colors ~/.vim/
 
+# coc-setting 
+ln coc-settings.json ~/.vim/
+
