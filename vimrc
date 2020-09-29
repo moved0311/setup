@@ -132,11 +132,19 @@ autocmd BufWritePre *.js,*.jsx,*mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.grap
 "  styled-components 
 "=====================
 Plugin 'styled-components/vim-styled-components'
+
 "=====================
 "    vim-jsx 
 "=====================
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+"=====================
+"    closetag.vim 
+"=====================
+Plugin 'alvan/vim-closetag'
+let g:closetag_filenames = '*.html, *.js, *.jsx'
+
+
 
 
 
