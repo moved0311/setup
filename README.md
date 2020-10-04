@@ -1,3 +1,7 @@
+## Pre-install
+nodejs
+yarn
+
 ## Install
 1. ./install.sh
 2. vim 
