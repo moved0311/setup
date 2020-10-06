@@ -17,6 +17,7 @@ set nocompatible	"和舊版vi不相容
 set expandtab     "空白取代tab
 set tabstop=2
 set shiftwidth=2
+set smartindent
 "}}}
 "Encoding {{{
 set encoding=utf-8
@@ -55,8 +56,15 @@ nnoremap <S-k>  <C-w>k
 "compiler code
 autocmd BufRead *.html nmap <leader>c :w<CR>G:!google-chrome % & <CR><CR>
 autocmd BufRead *.md nmap <leader>c :w<CR>G:!google-chrome % & <CR><CR>
-autocmd BufRead *.py   nmap <leader>c :w<CR>G:r!python %<CR>`.
+autocmd BufRead *.py   nmap <leader>c :w<CR>G:r!python %<CR>
 autocmd BufRead *.java nmap <leader>c :w<CR>G:r!javac %; java `basename % .java`<CR>
+autocmd BufRead *.js   nmap <leader>c :w<CR>G:r!node % < input <CR>
+
+"search
+nnoremap <C-f> viwy/<C-r>"<CR>
+ 
+
+
 "}}}
 "Plugin {{{
 
@@ -153,4 +161,3 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 "}}}
-
