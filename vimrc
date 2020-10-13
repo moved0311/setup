@@ -10,13 +10,14 @@ augroup END
 "}}}
 "General {{{
 syntax on
-set hlsearch		  "搜尋顯示
-set ic				    "case insensitive 不區分大小寫
-set history=50		"紀錄50個指令
-set nocompatible	"和舊版vi不相容
-set expandtab     "空白取代tab
+set hlsearch		  
+set ic				    "case insensitive 
+set history=50		
+set nocompatible	
+set expandtab     "tab = space
 set tabstop=2
 set shiftwidth=2
+set autoindent
 set smartindent
 "}}}
 "Encoding {{{
@@ -24,8 +25,6 @@ set encoding=utf-8
 set fileencoding=utf-8
 "}}}
 "GUI {{{
-set background=dark
-colorscheme vgod
 set nu				      "show line number
 set relativenumber  "show relative line number
 set scrolloff=5		  "preserve 5 underline
@@ -33,11 +32,10 @@ set scrolloff=5		  "preserve 5 underline
 "split
 set splitbelow
 set splitright
-set cursorline      "目前行數底線
+set cursorline      
 "}}}
 "Keymap {{{
 let mapleader=","
-imap jj <ESC>
 
 "編輯.vimrc
 nmap <leader>e :e ~/.vimrc<CR>
@@ -59,10 +57,10 @@ autocmd BufRead *.md nmap <leader>c :w<CR>G:!google-chrome % & <CR><CR>
 autocmd BufRead *.py   nmap <leader>c :w<CR>G:r!python %<CR>
 autocmd BufRead *.java nmap <leader>c :w<CR>G:r!javac %; java `basename % .java`<CR>
 autocmd BufRead *.js   nmap <leader>c :w<CR>G:r!node % < input <CR>
+"autocmd BufRead *.js   nmap <leader>c :w<CR>G:r!node % <CR>
 
-"search
+"search word : crtl + f
 nnoremap <C-f> viwy/<C-r>"<CR>
- 
 
 
 "}}}
@@ -86,6 +84,18 @@ Plugin 'git://git.wincent.com/command-t.git'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+"=================
+"  color Scheme 
+"=================
+"colorscheme vgod
+"colorscheme desert256v2
+colorscheme evening
+Plugin 'flazz/vim-colorschemes'
+
+"press F8 change next scheme, shift-F8 prev scheme.
+Plugin 'xolox/vim-colorscheme-switcher'
+Plugin 'xolox/vim-misc'
 
 "=================
 "   NERDTree
@@ -145,14 +155,12 @@ Plugin 'styled-components/vim-styled-components'
 "    vim-jsx 
 "=====================
 Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+"Plugin 'mxw/vim-jsx'
 "=====================
 "    closetag.vim 
 "=====================
-Plugin 'alvan/vim-closetag'
-let g:closetag_filenames = '*.html, *.js, *.jsx'
-
-
+"Plugin 'alvan/vim-closetag'
+""let g:closetag_filenames = '*.html, *.js, *.jsx'
 
 
 
