@@ -14,9 +14,9 @@ set hlsearch
 set ic				    "case insensitive 
 set history=50		
 set nocompatible	
-set expandtab     "tab = space
-set tabstop=2
-set shiftwidth=2
+set expandtab     
+set tabstop=4
+set shiftwidth=4
 set autoindent
 set smartindent
 "}}}
@@ -88,14 +88,24 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 "=================
 "  color Scheme 
 "=================
-"colorscheme vgod
-"colorscheme desert256v2
+Plugin 'othree/yajs.vim'
+Plugin 'othree/html5.vim'
+Plugin 'mhartington/oceanic-next'
+
+"let g:oceanic_next_terminal_bold = 1
+"let g:oceanic_next_terminal_italic = 1
+"colorscheme OceanicNext
+
 colorscheme evening
-Plugin 'flazz/vim-colorschemes'
+
 
 "press F8 change next scheme, shift-F8 prev scheme.
 Plugin 'xolox/vim-colorscheme-switcher'
 Plugin 'xolox/vim-misc'
+
+"====================
+"  syntax highlight 
+"====================
 
 "=================
 "   NERDTree
@@ -104,16 +114,13 @@ Plugin 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
 
 "=================
-"   lightline
+"    airline 
 "=================
-Plugin 'itchyny/lightline.vim'
-set laststatus=2
-if !has('gui_running')
-	set t_Co=256
-endif
-let g:lightline = {
-	\'colorscheme': 'jellybeans',
-	\ }
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized_flood'
+let laststatus=2
 
 "=================
 "     emmet
@@ -138,7 +145,6 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 "   prettier
 "=================
 " cd ~/.vim/bundle
-" git clone https://github.com/prettier/vim-prettier
 Plugin 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'branch': 'release/0.x'
@@ -155,12 +161,29 @@ Plugin 'styled-components/vim-styled-components'
 "    vim-jsx 
 "=====================
 Plugin 'pangloss/vim-javascript'
-"Plugin 'mxw/vim-jsx'
+
+"=====================
+"    close tag 
+"=====================
+Plugin 'alvan/vim-closetag'
+let g:closetag_filenames = '*.js'
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_close_shortcut = '<leader>>'
+
 "=====================
 "    closetag.vim 
 "=====================
 "Plugin 'alvan/vim-closetag'
 ""let g:closetag_filenames = '*.html, *.js, *.jsx'
+
+"=====================
+"    indentLine 
+"=====================
+Plugin 'Yggdroot/indentLine'
+set listchars=tab:·\ ,trail:·
+set list
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_leadingSpaceChar = '.'
 
 
 
