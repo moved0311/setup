@@ -6,8 +6,6 @@ yarn
 1. ./install.sh
 2. vim 
 3. :PluginInstall
-4. :CocInstall coc-pairs coc-tsserver coc-json coc-html coc-css coc-eslint coc-tslint
-
 
 
 ## Reference:
