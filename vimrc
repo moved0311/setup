@@ -131,15 +131,31 @@ Plugin 'mattn/emmet-vim'
 "    coc.nvim 
 "=================
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
-Plugin 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plugin 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-Plugin 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-Plugin 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plugin 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
-Plugin 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
-Plugin 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'}
-" insert line when <CR> is press, when use {}, []
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ 'coc-eslint',
+  \ 'coc-html'
+  \ ]
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+nmap <silent> gd <Plug>(coc-definition)
 
 "=================
 "   prettier

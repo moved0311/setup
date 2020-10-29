@@ -1,3 +1,4 @@
 {
-  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"]
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+  "coc.preferences.jumpCommand": "tab drop"
 }
