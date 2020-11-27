@@ -15,8 +15,8 @@ set ic				    "case insensitive
 set history=50		
 set nocompatible	
 set expandtab     
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set autoindent
 set smartindent
 "}}}
@@ -37,9 +37,11 @@ set cursorline
 "Keymap {{{
 let mapleader=","
 
-"編輯.vimrc
+inoremap <Nul> <TAB>
+
+"edit .vimrc
 nmap <leader>e :e ~/.vimrc<CR>
-"重新載入.vimrc
+"reload .vimrc
 nmap <leader>s :source ~/.vimrc<CR>		
 
 "close search highlight
@@ -144,16 +146,16 @@ let g:coc_global_extensions = [
   \ ]
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" 
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
 " go to definition in vsplit window.
 "nmap <silent> gd <Plug>(coc-definition)
@@ -202,8 +204,22 @@ set listchars=tab:·\ ,trail:·
 set list
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_leadingSpaceChar = '.'
+let g:indentLine_enabled = 0
 
-
+"=====================
+"   vim markdown 
+"=====================
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
+let g:vim_markdown_math = 1
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_toc_autofit = 1
+let g:instant_markdown_mathjax = 1
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_slow = 1
+nmap <leader>mp :InstantMarkdownPreview<CR>
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
