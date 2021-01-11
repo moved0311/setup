@@ -64,6 +64,9 @@ autocmd BufRead *.js   nmap <leader>c :w<CR>G:r!node % < input <CR>
 "search word : crtl + f
 nnoremap <C-f> viwy/<C-r>"<CR>
 
+"toggle line number
+nnoremap <leader>nu :set relativenumber! nu!<CR>
+
 
 "}}}
 "Plugin {{{
