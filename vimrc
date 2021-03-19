@@ -140,12 +140,9 @@ Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
-  \ 'coc-tsserver',
   \ 'coc-eslint',
-  \ 'coc-prettier',
   \ 'coc-json',
   \ 'coc-eslint',
-  \ 'coc-html'
   \ ]
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -168,12 +165,12 @@ nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<CR>
 "   prettier
 "=================
 " cd ~/.vim/bundle
-Plugin 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'branch': 'release/0.x'
-  \ }
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+"Plugin 'prettier/vim-prettier', {
+"  \ 'do': 'yarn install',
+"  \ 'branch': 'release/0.x'
+"  \ }
+"let g:prettier#autoformat = 0
+"autocmd BufWritePre *.js,*.jsx,*mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 "=====================
 "  styled-components 
