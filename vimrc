@@ -42,10 +42,15 @@ inoremap <Nul> <TAB>
 "edit .vimrc
 nmap <leader>e :e ~/.vimrc<CR>
 "reload .vimrc
-nmap <leader>s :source ~/.vimrc<CR>		
+nmap <leader>s :source ~/.vimrc<CR>
 
+"search word : crtl + f
+nnoremap <C-f> viwy/<C-r>"<CR>
 "close search highlight
 map <leader>/ :nohl<CR>
+
+"set paste / set nopaste
+nnoremap <leader>p :set invpaste paste?<CR>
 
 " move window when split (shift + h,j,k,l)
 nnoremap <S-h>  <C-w>h
@@ -55,14 +60,11 @@ nnoremap <S-k>  <C-w>k
 
 "compiler code
 autocmd BufRead *.html nmap <leader>c :w<CR>G:!google-chrome % & <CR><CR>
-autocmd BufRead *.md nmap <leader>c :w<CR>G:!google-chrome % & <CR><CR>
+autocmd BufRead *.md   nmap <leader>c :w<CR>G:!google-chrome % & <CR><CR>
 autocmd BufRead *.py   nmap <leader>c :w<CR>G:r!python %<CR>
 autocmd BufRead *.java nmap <leader>c :w<CR>G:r!javac %; java `basename % .java`<CR>
-autocmd BufRead *.js   nmap <leader>c :w<CR>G:r!node % < input <CR>
-"autocmd BufRead *.js   nmap <leader>c :w<CR>G:r!node % <CR>
-
-"search word : crtl + f
-nnoremap <C-f> viwy/<C-r>"<CR>
+autocmd BufRead *.js   nmap <leader>c :w<CR>G:r!node % <CR>
+autocmd BufRead *.c    nmap <leader>c :w<CR> :!clear; make %<<CR>  G:r! ./%<<CR>
 
 "toggle line number
 nnoremap <leader>nu :set relativenumber! nu!<CR>
