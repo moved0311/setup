@@ -145,23 +145,12 @@ let g:coc_global_extensions = [
   \ 'coc-eslint',
   \ 'coc-json',
   \ 'coc-eslint',
+  \ 'coc-html',
+  \ 'coc-tslint'
   \ ]
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-" 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
 
 " go to definition in vsplit window.
 "nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<CR>
 
 "=================
 "   prettier
@@ -173,11 +162,13 @@ nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<CR>
 "  \ }
 "let g:prettier#autoformat = 0
 "autocmd BufWritePre *.js,*.jsx,*mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+"
+nmap <silent> gd :call CocAction('jumpDefinition', 'vsplit')<CR>
 
 "=====================
 "  styled-components 
 "=====================
-Plugin 'styled-components/vim-styled-components'
+"Plugin 'styled-components/vim-styled-components'
 
 "=====================
 "    vim-jsx 
@@ -188,15 +179,9 @@ Plugin 'pangloss/vim-javascript'
 "    close tag 
 "=====================
 Plugin 'alvan/vim-closetag'
-let g:closetag_filenames = '*.js'
+let g:closetag_filenames = '*.js, *.tsx'
 let g:closetag_emptyTags_caseSensitive = 1
 let g:closetag_close_shortcut = '<leader>>'
-
-"=====================
-"    closetag.vim 
-"=====================
-"Plugin 'alvan/vim-closetag'
-""let g:closetag_filenames = '*.html, *.js, *.jsx'
 
 "=====================
 "    indentLine 
@@ -222,6 +207,15 @@ let g:instant_markdown_mathjax = 1
 let g:instant_markdown_autostart = 0
 let g:instant_markdown_slow = 1
 nmap <leader>mp :InstantMarkdownPreview<CR>
+
+"=====================
+"   clang-format 
+"=====================
+function! Formatonsave()
+  let l:formatdiff = 1
+  py3f /usr/share/clang/clang-format.py
+endfunction
+autocmd BufWritePre *.h,*.hpp,*.c,*.cc,*.cpp call Formatonsave()
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
