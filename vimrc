@@ -64,7 +64,7 @@ autocmd BufRead *.md   nmap <leader>c :w<CR>G:!google-chrome % & <CR><CR>
 autocmd BufRead *.py   nmap <leader>c :w<CR>G:r!python %<CR>
 autocmd BufRead *.java nmap <leader>c :w<CR>G:r!javac %; java `basename % .java`<CR>
 autocmd BufRead *.js   nmap <leader>c :w<CR>G:r!node % <CR>
-autocmd BufRead *.c    nmap <leader>c :w<CR> :!clear; make %<<CR>  G:r! ./%<<CR>
+autocmd BufRead *.c    nmap <leader>c :w<CR> :!clear; make %<<CR>  G:! ./%<<CR>
 
 "toggle line number
 nnoremap <leader>nu :set relativenumber! nu!<CR>
@@ -146,23 +146,11 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-eslint',
   \ 'coc-html',
-  \ 'coc-tslint'
   \ ]
 
 " go to definition in vsplit window.
 "nmap <silent> gd <Plug>(coc-definition)
 
-"=================
-"   prettier
-"=================
-" cd ~/.vim/bundle
-"Plugin 'prettier/vim-prettier', {
-"  \ 'do': 'yarn install',
-"  \ 'branch': 'release/0.x'
-"  \ }
-"let g:prettier#autoformat = 0
-"autocmd BufWritePre *.js,*.jsx,*mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-"
 nmap <silent> gd :call CocAction('jumpDefinition', 'vsplit')<CR>
 
 "=====================
@@ -211,11 +199,7 @@ nmap <leader>mp :InstantMarkdownPreview<CR>
 "=====================
 "   clang-format 
 "=====================
-function! Formatonsave()
-  let l:formatdiff = 1
-  py3f /usr/share/clang/clang-format.py
-endfunction
-autocmd BufWritePre *.h,*.hpp,*.c,*.cc,*.cpp call Formatonsave()
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
