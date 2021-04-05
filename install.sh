@@ -1,16 +1,17 @@
 #!/bin/bash
 # title: envirionment setup
-# date: 2020/09/23
 
-ln ./bashrc ~/.bashrc
-ln ./vimrc  ~/.vimrc
+SCRIPT_PATH=`dirname "$0"`
 
-# install vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # install colors
-cp -r ./colors ~/.vim/
+cp -r ${SCRIPT_PATH}/colors ~/.vim/
+
+ln ${SCRIPT_PATH}/bashrc ~/.bashrc
+ln ${SCRIPT_PATH}/vimrc  ~/.vimrc
 
 # coc-setting 
-ln ./coc-settings.json ~/.vim/
+ln ${SCRIPT_PATH}/coc-settings.json ~/.vim/
 
