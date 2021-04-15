@@ -19,6 +19,9 @@ set tabstop=2
 set shiftwidth=2
 set autoindent
 set smartindent
+set foldmethod=indent
+set foldlevel=100
+set foldnestmax=2
 "}}}
 "Encoding {{{
 set encoding=utf-8
