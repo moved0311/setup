@@ -18,7 +18,7 @@ yarn
 |--|--|--|
 |\<leader\> e| edit .vimrc|| 
 |\<leader\> s| reload .vimrc||
-|ctrl + f | find word in current cursor| ctrl + n (next), ctrl + p (previous)|
+|ctrl + f | find word in current cursor|  n (next), shift + n (previous)|
 |\<leader\> / | close search highlight||
 |\<leader\> c|compile code||
 |\<leader\> p| toggle set paste||
